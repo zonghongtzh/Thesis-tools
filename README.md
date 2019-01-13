@@ -20,7 +20,7 @@ compulsory_keywords =
 The step by step instructions to getting the above are below. 
 I will edit the code and create an exe file for you to run the code without python
 
-# Directions to use: Singapore Archives research.
+# Directions to use: Singapore Archives searcher.
 To conduct primary/secondary source research for a Arts/Social Science thesis, students may need to sift through hundreds of thousands of newspaper articles from http://eresources.nlb.gov.sg/newspapers/. To do this, students first:
 1. Conduct a keyword search
 2. Check the relevent filter boxes
