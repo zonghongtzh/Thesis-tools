@@ -1,7 +1,24 @@
 # Thesis-tools
 (directions to use will be posted below)
 
-users should ideally have Python IDEs to edit the script. (e.g. Anaconda, Sublime text)  
+The codes have to be edited in a IDE, therefore users should ideally have Python IDEs to edit the script. (e.g. Anaconda, Sublime text)  
+
+If you are urgent and without coding platforms, do drop me an email with the following: 
+
+year_start = 
+
+year_end = 
+
+unique_url = 
+
+page_navigation_url = 
+
+keywords = 
+
+compulsory_keywords = 
+
+The step by step instructions to getting the above are below. 
+I will edit the code and create an exe file for you to run the code without python
 
 # Directions to use: Singapore Archives research.
 To conduct primary/secondary source research for a Arts/Social Science thesis, students may need to sift through hundreds of thousands of newspaper articles from http://eresources.nlb.gov.sg/newspapers/. To do this, students first:
@@ -82,7 +99,7 @@ compulsory_keywords = [""]
 upon completion, save and run code
 
 
-
+Post-script notes: Will create a user-input version soon 
 
 
 
