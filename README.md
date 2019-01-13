@@ -2,6 +2,7 @@
 (directions to use will be posted below)
 
 The codes have to be edited in a IDE, therefore users should ideally have Python IDEs to edit the script. (e.g. Anaconda, Sublime text)  
+# Singapore Archives searcher 
 
 If you are urgent and without coding platforms, do drop me an email with the following: 
 
@@ -18,7 +19,9 @@ keywords =
 compulsory_keywords = 
 
 The step by step instructions to getting the above are below. 
-I will edit the code and create an exe file for you to run the code without python
+I will edit the code and run the code on a case by case basis. 
+
+later edit: In Singapore_Archives_searcher_V2 there is no need to edit the code itself. Simply run the entire code and input the information as required
 
 # Directions to use: Singapore Archives searcher.
 To conduct primary/secondary source research for a Arts/Social Science thesis, students may need to sift through hundreds of thousands of newspaper articles from http://eresources.nlb.gov.sg/newspapers/. To do this, students first:
@@ -99,7 +102,6 @@ compulsory_keywords = [""]
 upon completion, save and run code
 
 
-Post-script notes: Will create a user-input version soon 
 
 
 
