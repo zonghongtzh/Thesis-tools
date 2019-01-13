@@ -1,0 +1,63 @@
+year_start = 1953
+year_end = 1987
+unique_url = "http://eresources.nlb.gov.sg/newspapers/Digitised/Search?ST=1&AT=filter&K=%E5%8D%8E%E6%96%87&KA=%E5%8D%8E%E6%96%87&DF=&DT=&Display=0&AO=true&NPT=&L=&CTA=&NID=lhzb|nysp|scjp&CT=ARTICLE&WC=From51To300&YR="
+page_navigation_url = "http://eresources.nlb.gov.sg/newspapers/Digitised/Search?ST=1&AT=filter&DF=&DT=&AO=true&NPT=&L=&CTA=&NID=straitstimes%7csingherald&CT=ARTICLE%7cLETTER&WC=From51To300&YR=&k=english%20language&ka=english%20language&P=2&Display=0&filterS=0"
+keywords = ['"', "'", "the", "USING", "采取", "say", "said", "saying"]
+compulsory_keywords = [""]
+
+import urllib.request
+from lxml import etree
+import pandas as pd
+import numpy as np
+
+url_year_index = page_navigation_url.index("YR=")
+url_p_index = page_navigation_url.index("P=")
+years = np.linspace(year_start,year_end,year_end-year_start+1).astype(int)
+list_of_adverb = keywords
+compulsory = compulsory_keywords
+for y in range(len(years)):
+    full_links_df = pd.DataFrame([])
+    url_main = unique_url + str(years[y])
+    with urllib.request.urlopen(url_main) as response:
+       page_content = response.read()
+    print(y)
+    html = etree.HTML(page_content)
+    pages = html.findall('.//ul[@class="pagesOf"]li')
+    try:
+        pages_str = pages[1].text
+        pages_list = [int(s) for s in pages_str.split() if s.isdigit()]
+        pages = pages_list[0]
+        for p in range(1,pages+1):
+            url = page_navigation_url[:url_year_index+3] + str(years[y]) + page_navigation_url[url_year_index+3:url_p_index+2] + str(p) + page_navigation_url[url_p_index+2+1:]
+            with urllib.request.urlopen(url) as response:
+               page_content = response.read()
+            html = etree.HTML(page_content)
+            draws = html.findall('.//p[@class="rs-summary"]')
+            text = []
+            for draw in draws:
+                text_written = draw.text, draw.get('value'), draw.get('querystring')
+                full_text = text_written[0]
+                text.append(full_text)
+            link_draws = html.findall('.//a[@id="Popup"]')
+            links = []
+            for link_draw in link_draws:
+                links_written = link_draw.get("href")
+                full_link = "http://eresources.nlb.gov.sg/" + links_written
+                links.append(full_link)
+            index = []
+            for j in range(len(text)):
+                if (any(ext in text[j] for ext in list_of_adverb) and any(ext in text[j] for ext in compulsory)):
+                    index.append(j)
+            index_list = list(set(index))
+            links_df = pd.DataFrame(links)[0][index_list]
+            full_links_df = pd.concat([full_links_df,links_df])
+            print("page " + str(p) + "done")
+            if p == 20:
+                break
+            else:
+                continue
+    except:
+        print("links" + str(years[y]) + "failed")
+        continue
+    full_links_df.to_csv("links" + str(years[y]) + ".csv")
+    print("links" + str(years[y]) + ".csv done")
