@@ -23,7 +23,7 @@ I will edit the code and run the code on a case by case basis.
 
 ## later edit: In Singapore_Archives_searcher_V2 there is no need to edit the code itself. Simply run the entire code and input the information as required
 
-# Directions to use: Singapore Archives searcher.
+# How to use: Singapore Archives searcher.
 To conduct primary/secondary source research for a Arts/Social Science thesis, students may need to sift through hundreds of thousands of newspaper articles from http://eresources.nlb.gov.sg/newspapers/. To do this, students first:
 1. Conduct a keyword search
 2. Check the relevent filter boxes
